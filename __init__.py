@@ -52,7 +52,7 @@ def Readfiche(post_id):
     return render_template('read_data.html', data=data)
 
 
-#Authentificationdesuser
+# Fonction pour créer une clé "authentifie_user" dans la session utilisateur
 def est_authentifie_user():
     return session.get('authentifie_user')
 
@@ -67,18 +67,17 @@ def authentification_user():
 
     return render_template('formulaire_authentification_user.html', error=False)
 
-
-#Fonctionalité pour la recherchepar nom
-
 @app.route('/fiche_nom/<string:nom>')
 def ReadFicheNom(nom):
+    if not est_authentifie_user():
+        return redirect(url_for('authentification_user'))
+
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM clients WHERE nom = ?', (nom,))
     data = cursor.fetchall()
     conn.close()
     return render_template('read_data.html', data=data)
-
 
 @app.route('/consultation/')
 def ReadBDD():
