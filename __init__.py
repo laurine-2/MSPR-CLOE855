@@ -39,6 +39,8 @@ def authentification():
 
     return render_template('formulaire_authentification.html', error=False)
 
+
+
 @app.route('/fiche_client/<int:post_id>')
 def Readfiche(post_id):
     conn = sqlite3.connect('database.db')
@@ -48,6 +50,35 @@ def Readfiche(post_id):
     conn.close()
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
+
+
+#Authentificationdesuser
+def est_authentifie_user():
+    return session.get('authentifie_user')
+
+@app.route('/authentification_user', methods=['GET', 'POST'])
+def authentification_user():
+    if request.method == 'POST':
+        if request.form['username'] == 'user' and request.form['password'] == '12345':
+            session['authentifie_user'] = True
+            return redirect(url_for('ReadFicheNom', nom=request.form['nom']))
+        else:
+            return render_template('formulaire_authentification_user.html', error=True)
+
+    return render_template('formulaire_authentification_user.html', error=False)
+
+
+#Fonctionalité pour la recherchepar nom
+
+@app.route('/fiche_nom/<string:nom>')
+def ReadFicheNom(nom):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients WHERE nom = ?', (nom,))
+    data = cursor.fetchall()
+    conn.close()
+    return render_template('read_data.html', data=data)
+
 
 @app.route('/consultation/')
 def ReadBDD():
