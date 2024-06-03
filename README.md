@@ -187,7 +187,7 @@ Votre script CICD est à présent prêt à être déclanché. Celui-ci se décle
   
 Notions acquises de cette séquence :  
 Vous avez vu dans cette séquence comment créer des secrets GiHUB afin de mettre en place de l'industrialisation continue. Nous avons créé des secrets ainsi que des clés public et privée. L'utilité des scripts d'actions (C'est à dire des scripts exécutés lors des Commits) est très importante mais sortes malheureusement du cadre de cet atelier faute de temps. Toutefois, je vous invites à découvrir cet outil via les différentes sources du Web (Google, ChatGPT, etc..).  
-########La sequence qui m'ale plus fais galerer - jusqu'apresent j'ai as la solution-------------
+########La sequence qui m'ale plus fais galerer - jusqu'apresent j'ai as la solution-------- meme maintenants-----
 ---------------------------------------------------
 Séquence 4 : Créer la base de données sur votre serveur
 ---------------------------------------------------
