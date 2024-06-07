@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# Chemin vers votre base de données
-DATABASE_PATH='/www/flask/database.db'
+# Variables
+storage_account_name="msprcloe855"
+container_name="backups"
+file_to_upload="/www/flask/database.db"
+blob_name="database_$(date +%Y%m%d%H%M%S).db"
 
-# Chemin vers le dossier de sauvegarde
-BACKUP_PATH='D:\mspr-cloe855\BACKUP'
+# Assurez-vous que la CLI Azure est installée et que vous êtes connecté
+az login --service-principal -u [App-ID] -p [password-or-cert] --tenant [Tenant-ID]
 
-# Création du nom de fichier avec horodatage
-DATE=$(date +%Y-%m-%d_%H-%M-%S)
-BACKUP_FILE="$BACKUP_PATH/database_$DATE.db"
-
-# Copie de la base de données
-cp $DATABASE_PATH $BACKUP_FILE
-
-echo "Sauvegarde de la base de données effectuée : $BACKUP_FILE"
+# Uploader le fichier
+az storage blob upload --account-name $storage_account_name --container-name $container_name --file $file_to_upload --name $blob_name
