@@ -267,6 +267,8 @@ Difficulté : Moyenne (~2 heures)
 Votre MSPR fera l'objet d'un rapport venant accompagner et compléter les travaux techniques que vous avez pu réalisé dans le cadre de votre projet. 
 Complétez directement ce Readme pour nous expliquer comment avez sécuriser votre infrastructure.  
 
+""
+
 **Expliquez nous dans cette section comment fonctionne la sécurisation de votre infrastructure :**  
 ..  
 ..  
